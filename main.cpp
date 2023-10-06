@@ -4,6 +4,10 @@ using namespace std;
 int main () {
     setlocale(0, "");
 
+    // Базовые переменные для всех типов данных
+    short int order = sizeof(int) * 8 - 1;
+    unsigned int mask = 1 << order;
+
     while(true) {
         cout << "Выберите пункт работы (число от 1 до 4): " << "\n";
         short int workPoint;
@@ -21,6 +25,27 @@ int main () {
                 "long double: " << sizeof(long double) << "\n" <<
                 "char: " << sizeof(char) << "\n" <<
                 "bool: " << sizeof(bool) << "\n";
+                break;
+            }
+            case 2: {
+                int number;
+                cout << "\n" << "Введите целое число: ";
+                cin >> number;
+
+                for (int i = 0; i <= order; i++) {
+                    cout << ((number & mask) ? 1: 0);
+                    mask >>= 1;
+                    if (!i) {
+                        cout << " ";
+                    }
+                    if ((i + 1) % 8 == 0) {
+                        cout << " ";
+                    }
+                }
+                break;
+            }    
+            default: {
+                cout << "\n" << "Вы ввели не число в диапазоне от 1 до 4";
                 break;
             }
         }
