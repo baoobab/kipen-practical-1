@@ -43,7 +43,28 @@ int main () {
                     }
                 }
                 break;
-            }    
+            }
+            case 3: {
+                union {
+                    int number;
+                    float floatNumber;
+                };
+
+                cout << "\n" << "Введите вещественное число: ";
+                cin >> floatNumber;
+
+                for (int i = 0; i <= order; i++) {
+                    cout << ((number & mask) ? 1: 0);
+                    mask >>= 1;
+                    if (!i) {
+                        cout << " ";
+                    }
+                    if (i == 8) {
+                        cout << " ";
+                    }
+                }
+                break; 
+            }   
             default: {
                 cout << "\n" << "Вы ввели не число в диапазоне от 1 до 4";
                 break;
