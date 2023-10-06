@@ -4,9 +4,8 @@ using namespace std;
 int main () {
     setlocale(0, "");
 
-    // Базовые переменные для всех типов данных
-    short int order = sizeof(int) * 8 - 1;
-    unsigned int mask = 1 << order;
+    short int order = sizeof(int) * 8 - 1; // Постоянная для всех типов данных
+    
 
     cout << "Навигация:" << "\n"
     << "1) Cколько памяти (в байтах) отводится под различные типы данных" << "\n"
@@ -15,9 +14,9 @@ int main () {
     << "4) Двоичное представление в памяти (все разряды) типа double" << "\n";
 
     while(true) {
-        cout << "Выберите пункт работы (число от 1 до 4): " << "\n";
-        
+        unsigned int mask = 1 << order;
         short int workPoint;
+        cout << "Выберите пункт работы (число от 1 до 4): " << "\n";
         cin >> workPoint;
 
         switch (workPoint)
@@ -38,6 +37,10 @@ int main () {
                 int number;
                 cout << "\n" << "Введите целое число: ";
                 cin >> number;
+                if (!cin.good()) {
+                    cout << "\n" << "Вы ввели некорректное значение";
+                    break;
+                }
 
                 for (int i = 0; i <= order; i++) {
                     cout << ((number & mask) ? 1: 0);
@@ -59,6 +62,10 @@ int main () {
 
                 cout << "\n" << "Введите вещественное число: ";
                 cin >> floatNumber;
+                if (!cin.good()) {
+                    cout << "\n" << "Вы ввели некорректное значение";
+                    break;
+                }
 
                 for (int i = 0; i <= order; i++) {
                     cout << ((number & mask) ? 1: 0);
@@ -80,6 +87,10 @@ int main () {
 
                 cout << "\n" << "Введите вещественное число двойной точности: ";
                 cin >> doubleNumber;
+                if (!cin.good()) {
+                    cout << "\n" << "Вы ввели некорректное значение";
+                    break;
+                }
 
                 // Меняем элементы массива местами для корректного двоичного представления
                 int tempElement = numberArray[1];
@@ -107,8 +118,10 @@ int main () {
         }
         
         cin.clear(); // Очищаем поток ввода от возможных ошибок
-        cout << "\n" << "Продолжить работу программы? (Y/N) ";
+        cin.sync();
+
         char stopFlag;
+        cout << "\n" << "Продолжить работу программы? (Y/N) ";
         cin >> stopFlag;
         
         if (stopFlag != 'Y' && stopFlag != 'y') {
