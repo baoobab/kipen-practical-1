@@ -64,7 +64,35 @@ int main () {
                     }
                 }
                 break; 
-            }   
+            } 
+            case 4: {
+                union {
+                    int numberArray [2] = {};
+                    double doubleNumber;
+                };
+
+                cout << "\n" << "Введите вещественное число двойной точности: ";
+                cin >> doubleNumber;
+
+                // Меняем элементы массива местами для корректного двоичного представления
+                int tempElement = numberArray[1];
+                numberArray[0] = numberArray[1];
+                numberArray[1] = tempElement;
+
+                for (int j = 0; j < 2; j++) {
+                    for (int i = 0; i <= order; i++) {
+                        cout << ((numberArray[j] & mask) ? 1: 0);
+                        mask >>= 1;
+                        if (!j && !i) {
+                            cout << " ";
+                        }
+                        if (!j && i == 11) {
+                            cout << " ";
+                        }
+                    }
+                }
+                break;   
+            }       
             default: {
                 cout << "\n" << "Вы ввели не число в диапазоне от 1 до 4";
                 break;
