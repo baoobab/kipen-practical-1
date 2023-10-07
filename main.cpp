@@ -5,7 +5,6 @@ int main () {
     setlocale(0, "");
 
     short int order = sizeof(int) * 8 - 1; // Постоянная для всех типов данных
-    
 
     cout << "Навигация:" << "\n"
     << "1) Cколько памяти (в байтах) отводится под различные типы данных" << "\n"
@@ -16,7 +15,7 @@ int main () {
     while(true) {
         unsigned int mask = 1 << order;
         short int workPoint;
-        cout << "Выберите пункт работы (число от 1 до 4): " << "\n";
+        cout << "Выберите пункт работы (число от 1 до 4): ";
         cin >> workPoint;
 
         switch (workPoint)
@@ -45,13 +44,11 @@ int main () {
                 for (int i = 0; i <= order; i++) {
                     cout << ((number & mask) ? 1: 0);
                     mask >>= 1;
-                    if (!i) {
-                        cout << " ";
-                    }
-                    if ((i + 1) % 8 == 0) {
+                    if ((i + 1) % 8 == 0 || !i) {
                         cout << " ";
                     }
                 }
+
                 break;
             }
             case 3: {
@@ -68,12 +65,9 @@ int main () {
                 }
 
                 for (int i = 0; i <= order; i++) {
-                    cout << ((number & mask) ? 1: 0);
+                    cout << ((number & mask) ? 1 : 0);
                     mask >>= 1;
-                    if (!i) {
-                        cout << " ";
-                    }
-                    if (i == 8) {
+                    if (i == 8 || !i) {
                         cout << " ";
                     }
                 }
@@ -101,10 +95,7 @@ int main () {
                     for (int i = 0; i <= order; i++) {
                         cout << ((numberArray[j] & mask) ? 1: 0);
                         mask >>= 1;
-                        if (!j && !i) {
-                            cout << " ";
-                        }
-                        if (!j && i == 11) {
+                        if (!j && i == 11 || !j && !i) {
                             cout << " ";
                         }
                     }
