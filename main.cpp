@@ -3,7 +3,8 @@ using namespace std;
 
 int main () {
     setlocale(0, "");
-
+    system("chcp 1251"); // Корректное отображение кириллицыы в гитхабе
+    
     short int order = sizeof(int) * 8 - 1; // Постоянная для всех типов данных
 
     cout << "Навигация:" << "\n"
