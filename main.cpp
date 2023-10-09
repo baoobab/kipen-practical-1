@@ -15,6 +15,7 @@ int main () {
     while(true) {
         unsigned int mask = 1 << order;
         short int workPoint;
+        
         cout << "Выберите пункт работы (число от 1 до 4): ";
         cin >> workPoint;
 
