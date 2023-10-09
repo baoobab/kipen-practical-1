@@ -3,21 +3,20 @@ using namespace std;
 
 int main () {
     setlocale(0, "");
-    system("chcp 1251"); // Корректное отображение кириллицыы в гитхабе
-    
-    short int order = sizeof(int) * 8 - 1; // Постоянная для всех типов данных
 
-    cout << "Навигация:" << "\n"
-    << "1) Cколько памяти (в байтах) отводится под различные типы данных" << "\n"
-    << "2) Двоичное представление в памяти (все разряды) целого числа" << "\n"
-    << "3) Двоичное представление в памяти (все разряды) типа float" << "\n"
-    << "4) Двоичное представление в памяти (все разряды) типа double" << "\n";
+    short int order = sizeof(int) * 8 - 1;
+
+    cout << "Navigation:" << "\n"
+    << "1) How much memory (in bytes) is allocated for different data types" << "\n"
+    << "2) Binary representation in memory (all bits) of an integer" << "\n"
+    << "3) Binary representation in memory (all bits) of type float" << "\n"
+    << "4) Binary representation in memory (all bits) of type double" << "\n";
 
     while(true) {
         unsigned int mask = 1 << order;
         short int workPoint;
         
-        cout << "Выберите пункт работы (число от 1 до 4): ";
+        cout << "Select point of work (number 1 to 4): ";
         cin >> workPoint;
 
         switch (workPoint)
@@ -36,10 +35,10 @@ int main () {
             }
             case 2: {
                 int number;
-                cout << "\n" << "Введите целое число: ";
+                cout << "\n" << "Enter an integer: ";
                 cin >> number;
                 if (!cin.good()) {
-                    cout << "\n" << "Вы ввели некорректное значение";
+                    cout << "\n" << "You entered an incorrect value";
                     break;
                 }
 
@@ -59,10 +58,10 @@ int main () {
                     float floatNumber;
                 };
 
-                cout << "\n" << "Введите вещественное число: ";
+                cout << "\n" << "Enter a float number: ";
                 cin >> floatNumber;
                 if (!cin.good()) {
-                    cout << "\n" << "Вы ввели некорректное значение";
+                    cout << "\n" << "You entered an incorrect value";
                     break;
                 }
 
@@ -81,14 +80,14 @@ int main () {
                     double doubleNumber;
                 };
 
-                cout << "\n" << "Введите вещественное число двойной точности: ";
+                cout << "\n" << "Enter a double precision number: ";
                 cin >> doubleNumber;
                 if (!cin.good()) {
-                    cout << "\n" << "Вы ввели некорректное значение";
+                    cout << "\n" << "You entered an incorrect value";
                     break;
                 }
 
-                // Меняем элементы массива местами для корректного двоичного представления
+                // Swap array elements for correct binary representation
                 int tempElement = numberArray[1];
                 numberArray[0] = numberArray[1];
                 numberArray[1] = tempElement;
@@ -105,16 +104,16 @@ int main () {
                 break;   
             }       
             default: {
-                cout << "\n" << "Вы ввели не число в диапазоне от 1 до 4";
+                cout << "\n" << "You did not enter a number in the range from 1 to 4";
                 break;
             }
         }
         
-        cin.clear(); // Очищаем поток ввода от возможных ошибок
+        cin.clear(); // Clearing the input stream from possible errors
         cin.sync();
 
         char stopFlag;
-        cout << "\n" << "Продолжить работу программы? (Y/N) ";
+        cout << "\n" << "Continue the program? (Y/N) ";
         cin >> stopFlag;
         
         if (stopFlag != 'Y' && stopFlag != 'y') {
