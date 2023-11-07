@@ -2,7 +2,7 @@
 using namespace std;
 
 int main () {
-    setlocale(0, "");
+    setlocale(LC_ALL, "Russian");
 
     short int order = sizeof(int) * 8 - 1;
 
@@ -89,9 +89,9 @@ int main () {
 
                 // Swap array elements for correct binary representation
                 int tempElement = numberArray[1];
-                numberArray[0] = numberArray[1];
-                numberArray[1] = tempElement;
-
+                numberArray[1] = numberArray[0];
+                numberArray[0] = tempElement;
+                
                 for (int j = 0; j < 2; j++) {
                     for (int i = 0; i <= order; i++) {
                         cout << ((numberArray[j] & mask) ? 1: 0);
@@ -100,6 +100,7 @@ int main () {
                             cout << " ";
                         }
                     }
+                    mask = 1 << order;
                 }
                 break;   
             }       
